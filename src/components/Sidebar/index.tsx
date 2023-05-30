@@ -6,7 +6,7 @@ import UploadModal from "../UploadModal";
 const Sidebar = () => {
   const [uploadModalOpen, setUploadModalOpen] = useState(false);
   return (
-    <div className="w-3/12 bg-white h-full border-r-gray-100 border-r shadow-md">
+    <div className="max-w-[280px] w-3/12 bg-white h-full border-r-gray-100 border-r shadow-md">
       <img src="/skplanet.png" className="w-36 p-2 mx-auto" />
       <ul className="flex flex-col">
         <button
