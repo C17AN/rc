@@ -59,7 +59,9 @@ const DetailModal = ({ item, open, onClose }: Props) => {
                     <div className="flex items-center">
                       <img
                         src={item.src}
-                        className="mr-4 max-h-28 min-h-12 shadow-lg rounded-lg border p-2"
+                        // Note: 테일윈드가 제대로 적용되지 않는 현상으로 GSD으로 처리한다.
+                        style={{ maxWidth: 200 }}
+                        className="mr-4 max-h-28 max-w-4 min-h-12 shadow-lg rounded-lg border p-2"
                       />
                       <div className="flex flex-col w-full">
                         <p className="mb-2">{item.Key}</p>
