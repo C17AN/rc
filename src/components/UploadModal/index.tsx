@@ -43,7 +43,7 @@ const UploadModal = ({ open, onClose }: Props) => {
             },
           ]);
         };
-        fr.readAsDataURL(file);
+        fr.readAsDataURL(file as any);
       });
     }
   };
@@ -62,7 +62,7 @@ const UploadModal = ({ open, onClose }: Props) => {
           ContentType: file.type,
           CacheControl: "max-age=86400",
         };
-        const response = await s3.upload(params).promise();
+        const response = await s3.upload(params as any).promise();
         toast.success("업로드 성공");
         console.log("Image uploaded successfully:", response.Location);
         onClose();

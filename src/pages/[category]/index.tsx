@@ -14,7 +14,7 @@ const params = {
 const ResourceListPage = (props: Props) => {
   const router = useRouter();
   const [detailModalOpen, setDetailModalOpen] = useState(false);
-  const [selectedResource, setSelectedResource] = useState();
+  const [selectedResource, setSelectedResource] = useState<any>();
   const selectedCategory = CATEGORY_LIST.find(
     (category) => category.value === (router.query.category || DEFAULT_CATEGORY)
   );
@@ -22,11 +22,11 @@ const ResourceListPage = (props: Props) => {
   const [resourceList, setResourceList] = useState([]);
 
   useEffect(() => {
-    s3.listObjects(params, (err, data) => {
+    s3.listObjects(params, (err, data: any) => {
       if (err) {
         console.error(err);
       } else {
-        setResourceList(() => [...data.Contents]);
+        setResourceList(() => ([...data.Contents] as any) || []);
       }
     });
   }, []);
@@ -49,7 +49,7 @@ const ResourceListPage = (props: Props) => {
         </p>
       </div>
       <ul className="grid grid-cols-5 gap-8 py-4 max-h-[72vh] overflow-y-scroll overflow-x-hidden">
-        {resourceList.map((item) => (
+        {resourceList.map((item: any) => (
           <li
             key={item.Key}
             onClick={() => handleResourceClick(item)}
